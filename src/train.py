@@ -24,7 +24,7 @@ def train(config_path: Text) -> None:
     X = train_dataset.drop('target', axis=1).values
 
     # Create an instance of classifier and fit the data.
-    clf = LogisticRegression(C=0.00001, solver='lbfgs', multi_class='multinomial', max_iter=100)
+    clf = LogisticRegression(C=0.0001, solver='lbfgs', multi_class='multinomial', max_iter=100)
     clf.fit(X, y)
 
     joblib.dump(clf, model_path)
