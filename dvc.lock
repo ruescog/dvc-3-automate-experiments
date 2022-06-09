@@ -20,18 +20,18 @@ stages:
       md5: 4224576f0267bf88902f87f0f6200967
       size: 2757
     - path: src/featurization.py
-      md5: 26bcd20988840cea9c6f1943d8f6595b
-      size: 811
+      md5: 6e5fa3e412603107ed79dfe6bc925c23
+      size: 1006
     outs:
     - path: data/iris_featurized.csv
-      md5: 4224576f0267bf88902f87f0f6200967
-      size: 2757
+      md5: de0aa728ae970bc8c141cbd6560bc7d6
+      size: 7260
   split_dataset:
     cmd: python src/split_dataset.py --config=params.yaml
     deps:
     - path: data/iris_featurized.csv
-      md5: 4224576f0267bf88902f87f0f6200967
-      size: 2757
+      md5: de0aa728ae970bc8c141cbd6560bc7d6
+      size: 7260
     - path: src/split_dataset.py
       md5: 2f6ba8c9967066a6465cf4aa972770ee
       size: 1061
@@ -46,24 +46,24 @@ stages:
           target_column: target
     outs:
     - path: data/test.csv
-      md5: 267bfa51ad9743b43b712d57b227f629
-      size: 597
+      md5: 9160381ec929cb2440d5a347112aa291
+      size: 1497
     - path: data/train.csv
-      md5: 62ad220902012b3562015caf7c38f7e7
-      size: 2217
+      md5: efaf7d2c272b59f383f0742ec9f5952d
+      size: 5732
   train:
     cmd: python src/train.py --config=params.yaml
     deps:
     - path: data/train.csv
-      md5: 62ad220902012b3562015caf7c38f7e7
-      size: 2217
+      md5: efaf7d2c272b59f383f0742ec9f5952d
+      size: 5732
     - path: src/train.py
       md5: 7e5217939f0d9d1fb8838b26e9f51d1b
       size: 1071
     outs:
     - path: data/model.joblib
-      md5: 6775460f7c2b3a3f37332fdb6190db9b
-      size: 903
+      md5: d6a904772cf5b8c85caf580ae32996b5
+      size: 951
   evaluate:
     cmd: python src/evaluate.py --config=params.yaml
     deps:
@@ -71,18 +71,18 @@ stages:
       md5: d4b044a096165faab992c4d950ee1f15
       size: 56
     - path: data/model.joblib
-      md5: 6775460f7c2b3a3f37332fdb6190db9b
-      size: 903
+      md5: d6a904772cf5b8c85caf580ae32996b5
+      size: 951
     - path: data/test.csv
-      md5: 267bfa51ad9743b43b712d57b227f629
-      size: 597
+      md5: 9160381ec929cb2440d5a347112aa291
+      size: 1497
     - path: src/evaluate.py
       md5: 1cf78e04c3da645efc059ab704c6f69d
       size: 1513
     outs:
     - path: data/cm.csv
-      md5: 1b1f7348090ce9c44c0846ead2b44906
-      size: 586
+      md5: d45a4f6d07b690cb2992e9f672bc4ae1
+      size: 590
     - path: data/metrics.json
-      md5: 73b5f2da16b97cc001a01c8746b891c3
+      md5: b0ae6333bc066a430c8fac98b976d1d1
       size: 32
